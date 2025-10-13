@@ -1,0 +1,12 @@
+{
+  "server": { "host": "localhost", "port": 25565, "version": "1.21.10", "auth": "microsoft" },
+  "base": { "spawn": [-1372, 87, 1409], "depositRadius": 10 },
+  "netherPath": [[-168, 70, 156], [-230, 69, 90], [-259, 63, 70], [-274, 37, 59]],
+  "end": { "gateway": [3, 75, 93], "portalRoom": [-2238, 39, 427] },
+  "behavior": {
+    "difficulty": "easy",
+    "useDaylight": true,
+    "gatherSurfaceAndCaves": true,
+    "bridgeMaterial": "end_stone"
+  }
+}
