@@ -5,23 +5,40 @@ const toolPlugin = require('mineflayer-tool').plugin;
 const config = require('./config.json');
 const Controller = require('./controller');
 
-const bot = mineflayer.createBot({
-  host: config.server.host,
-  port: config.server.port,
-  username: 'EnderExpeditionAI',
-  auth: config.server.auth,
-  version: config.server.version
-});
+console.log('[AI] Starting Ender Expedition Bot...');
+console.log(`[AI] Using authentication: ${config.server.auth}`);
 
-bot.loadPlugin(pathfinder);
-bot.loadPlugin(collectBlock);
-bot.loadPlugin(toolPlugin);
+async function startBot() {
+  try {
+    const bot = mineflayer.createBot({
+      host: config.server.host,
+      port: config.server.port,
+      username: config.bot.username || 'EnderExpeditionAI',
+      auth: config.server.auth || 'microsoft',
+      version: config.server.version
+    });
 
-bot.once('spawn', () => {
-  console.log('[EnderExpeditionAI] Spawned successfully.');
-  bot.pathfinder.setMovements(new Movements(bot));
-  Controller(bot, config);
-});
+    bot.loadPlugin(pathfinder);
+    bot.loadPlugin(collectBlock);
+    bot.loadPlugin(toolPlugin);
 
-bot.on('kicked', console.log);
-bot.on('error', console.log);
+    bot.once('spawn', () => {
+      console.log('[EnderExpeditionAI] Spawned successfully.');
+      bot.pathfinder.setMovements(new Movements(bot));
+      Controller(bot, config);
+    });
+
+    bot.on('kicked', reason => {
+      console.log('[AI] Kicked:', reason);
+    });
+
+    bot.on('error', err => {
+      console.error('[AI] Error:', err);
+    });
+
+  } catch (err) {
+    console.error('[AI] Failed to initialize bot:', err);
+  }
+}
+
+startBot();
