@@ -2,9 +2,14 @@
   "server": {
     "host": "localhost",
     "port": 25565,
-    "version": "1.21.1",
+    "version": "1.21.10",
     "auth": "microsoft"
   },
+  "bot": {
+    "username": "EnderExpeditionAI",
+    "logErrors": true
+  }
+}
   "base": {
     "spawn": [
       -1372,
