@@ -1,10 +1,10 @@
 const tasks = {
-  gather: require('./gather_resources'),
-  craft: require('./craft_tools'),
-  hunt: require('./hunt_endermen'),
-  travel: require('./travel_nether'),
-  explore: require('./explore_end'),
-  deposit: require('./deposit_loot')
+  gather: require('./tasks/gather_resources'),
+  craft: require('./tasks/craft_tools'),
+  hunt: require('./tasks/hunt_endermen'),
+  travel: require('./tasks/travel_nether'),
+  explore: require('./tasks/explore_end'),
+  deposit: require('./tasks/deposit_loot')
 };
 
 module.exports = async function controller(bot, config) {
